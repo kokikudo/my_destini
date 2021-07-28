@@ -19,6 +19,9 @@ class MyApp extends StatelessWidget {
         title: 'Flutter Demo',
         theme: ThemeData(
             primarySwatch: Colors.blue,
+            appBarTheme: const AppBarTheme(
+              color: Colors.white,
+            ),
             textTheme: const TextTheme(
               // 呼び出すときはTheme.of(context).textTheme.headline1 などで呼び出す
               headline1: TextStyle(
@@ -61,7 +64,7 @@ class MyApp extends StatelessWidget {
                   letterSpacing: 0.1),
               bodyText1: TextStyle(
                   fontFamily: 'SansJp',
-                  fontSize: 16,
+                  fontSize: 20,
                   fontWeight: FontWeight.w400,
                   letterSpacing: 0.5),
               bodyText2: TextStyle(

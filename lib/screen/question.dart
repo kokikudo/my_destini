@@ -11,72 +11,78 @@ class QuestionScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Consumer<QuestionBrain>(builder: (_, qBrain, child) {
       var _question = qBrain.getQuestion();
-      var _isLastQuestion = qBrain.isLastQuestion;
       return Scaffold(
         appBar: AppBar(
-          title: const Text('無駄遣いタイプ診断テスト'),
+          title: Text(
+            '無駄遣いタイプ診断テスト',
+            style: Theme.of(context).textTheme.headline5,
+          ),
         ),
-        body: Container(
-          padding: EdgeInsets.fromLTRB(27, 16, 27, 48),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: [
-              Container(
-                width: 300,
-                height: 400,
-                decoration: BoxDecoration(
-                    image: DecorationImage(image: _question.image)),
-              ),
-              SizedBox(
-                height: 16.0,
-              ),
-              Expanded(
-                  child: Text(
-                _question.questionText,
-                textAlign: TextAlign.center,
-                style: Theme.of(context).textTheme.bodyText1,
-              )),
-              SizedBox(
-                height: 16.0,
-              ),
-              TextButton(
-                  style: kButtonStyle(Colors.blue),
-                  onPressed: () {
-                    if (qBrain.isLastQuestion) {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => ResultScreen(answer: true),
-                        ),
-                      );
-                    }
-                    qBrain.nextQuestion(true);
-                  },
-                  child: Text(
-                    'はい',
-                    style: Theme.of(context).textTheme.button,
-                  )),
-              SizedBox(
-                height: 27.0,
-              ),
-              TextButton(
-                  style: kButtonStyle(Colors.red),
-                  onPressed: () {
-                    if (qBrain.isLastQuestion) {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => ResultScreen(answer: false),
-                        ),
-                      );
-                    }
-                    qBrain.nextQuestion(false);
-                  },
-                  child: Text(
-                    'いいえ',
-                    style: Theme.of(context).textTheme.button,
-                  )),
-            ],
+        body: Center(
+          child: Container(
+            padding: const EdgeInsets.fromLTRB(27, 16, 27, 48),
+            child: Column(
+              //crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: [
+                Container(
+                  width: 300,
+                  height: 400,
+                  decoration: BoxDecoration(
+                      image: DecorationImage(image: _question.image)),
+                ),
+                const SizedBox(
+                  height: 16.0,
+                ),
+                Expanded(
+                    child: Text(
+                  _question.questionText,
+                  textAlign: TextAlign.center,
+                  style: Theme.of(context).textTheme.bodyText1,
+                )),
+                const SizedBox(
+                  height: 16.0,
+                ),
+                TextButton(
+                    style: kButtonStyle(Colors.blue),
+                    onPressed: () {
+                      if (qBrain.isLastQuestion) {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) =>
+                                const ResultScreen(answer: true),
+                          ),
+                        );
+                      }
+                      qBrain.nextQuestion(true);
+                    },
+                    child: Text(
+                      'はい',
+                      style: Theme.of(context).textTheme.button,
+                    )),
+                const SizedBox(
+                  height: 27.0,
+                ),
+                TextButton(
+                    style: kButtonStyle(Colors.red),
+                    onPressed: () {
+                      if (qBrain.isLastQuestion) {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) =>
+                                const ResultScreen(answer: false),
+                          ),
+                        );
+                      }
+                      qBrain.nextQuestion(false);
+                    },
+                    child: Text(
+                      'いいえ',
+                      style: Theme.of(context).textTheme.button,
+                    )),
+              ],
+            ),
           ),
         ),
       );
